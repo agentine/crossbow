@@ -46,7 +46,7 @@ export function parse(
   // Check for built-in commands that need shell
   if (isBuiltinCommand(command)) {
     return {
-      command: process.env["COMSPEC"] ?? "cmd.exe",
+      command: env["COMSPEC"] ?? "cmd.exe",
       args: ["/d", "/s", "/c", escapeCommand(command), ...args.map(a => escapeArg(a, false))],
       options: { ...opts, windowsVerbatimArguments: true },
       original: command,

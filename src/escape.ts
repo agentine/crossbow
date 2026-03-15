@@ -23,13 +23,14 @@ export function escapeArg(arg: string, doubleEscape: boolean): string {
   let escaped = arg.replace(/(\\*)"/g, '$1$1\\"');
   // Escape trailing backslashes
   escaped = escaped.replace(/(\\*)$/, "$1$1");
-  // Wrap in double quotes
-  escaped = `"${escaped}"`;
 
   if (doubleEscape) {
-    // For .bat/.cmd files, also escape cmd metacharacters inside quotes
+    // For .bat/.cmd files, escape cmd metacharacters before wrapping in quotes
     escaped = escaped.replace(/[()%!^"<>&|]/g, "^$&");
   }
+
+  // Wrap in double quotes
+  escaped = `"${escaped}"`;
 
   return escaped;
 }

@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { openSync, readSync, closeSync } from "node:fs";
 
 /**
  * Read the shebang line from a file, if present.
@@ -7,8 +7,12 @@ import { readFileSync } from "node:fs";
 export function parseShebang(file: string): string | null {
   try {
     // Read only the first 150 bytes (enough for shebang line)
-    const fd = readFileSync(file, { encoding: "utf8", flag: "r" });
-    const firstLine = fd.split(/\r?\n/)[0];
+    const fd = openSync(file, "r");
+    const buf = Buffer.alloc(150);
+    const bytesRead = readSync(fd, buf, 0, 150, 0);
+    closeSync(fd);
+    const header = buf.subarray(0, bytesRead).toString("utf8");
+    const firstLine = header.split(/\r?\n/)[0];
     if (!firstLine || !firstLine.startsWith("#!")) return null;
     return firstLine.slice(2).trim();
   } catch {

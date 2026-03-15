@@ -13,7 +13,7 @@ lint:
 	npx tsc --noEmit
 
 fmt:
-	npx prettier --write src/ tests/
+	npx prettier --write src/ test/
 
 clean:
 	rm -rf dist/ coverage/ *.tsbuildinfo

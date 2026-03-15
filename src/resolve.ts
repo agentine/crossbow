@@ -1,5 +1,6 @@
 import { whichSync } from "./which.js";
 import { parseShebang, parseShebangCommand } from "./shebang.js";
+import { pathKey } from "./path-key.js";
 
 const isWindows = process.platform === "win32";
 
@@ -10,7 +11,7 @@ const isWindows = process.platform === "win32";
  */
 export function resolveCommand(command: string, env?: NodeJS.ProcessEnv): string | null {
   const resolved = whichSync(command, {
-    path: env?.["PATH"] ?? process.env["PATH"],
+    path: env?.[pathKey(env)] ?? process.env[pathKey()],
   });
 
   if (!resolved) return null;
@@ -38,7 +39,7 @@ export function resolveCommandWithShebang(
   env?: NodeJS.ProcessEnv,
 ): { file: string; args: string[]; original: string } | null {
   const resolved = whichSync(command, {
-    path: env?.["PATH"] ?? process.env["PATH"],
+    path: env?.[pathKey(env)] ?? process.env[pathKey()],
   });
 
   if (!resolved) return null;
