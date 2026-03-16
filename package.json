@@ -1,7 +1,7 @@
 {
   "name": "@agentine/crossbow",
   "version": "0.1.0",
-  "description": "Cross-platform child_process.spawn — drop-in replacement for cross-spawn with zero dependencies",
+  "description": "Cross-platform child_process.spawn \u2014 drop-in replacement for cross-spawn with zero dependencies",
   "repository": {
     "type": "git",
     "url": "https://github.com/agentine/crossbow.git"

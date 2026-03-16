@@ -7,14 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Fixed
-
-- `escape.ts`: correct double-escape of already-escaped arguments
-- `parse.ts`: use `COMSPEC` env variable for cmd.exe path lookup on Windows
-- `resolve.ts`: fix PATH key detection for case-insensitive Windows environments
-- `shebang.ts`: fix file read path resolution for shebang extraction
-
-## [0.1.0] - 2026-03-14
+## [0.1.0] - 2026-03-15
 
 ### Added
 
@@ -29,3 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Node.js 18+ support with no deprecation warnings on Node 24
 - Exported utilities: `pathKey`, `whichSync`, `whichSyncAll`, `parseShebang`, `parseShebangCommand`, `escapeArg`, `escapeCommand`, `isBatchFile`, `resolveCommand`
 - Comprehensive test suite: spawn, spawnSync, escape, resolve, shebang, and which
+
+### Fixed
+
+- `escape.ts`: correct double-escape of already-escaped arguments
+- `parse.ts`: use `COMSPEC` env variable for cmd.exe path lookup on Windows
+- `resolve.ts`: fix PATH key detection for case-insensitive Windows environments
+- `shebang.ts`: fix file read path resolution for shebang extraction
